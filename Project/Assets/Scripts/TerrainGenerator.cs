@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
+    public bool manual = false;
+
     [SerializeField]
     private GameObject TilePrefab;
+
+    GameController gameController;
 
     public int map_width;
     public int map_height;
@@ -24,12 +28,21 @@ public class TerrainGenerator : MonoBehaviour
 
     //private float delta_time = 0;
 
+    private void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
+
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    RunSimulation();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space) && manual)
+        {
+            RunSimulation();
+        }
+        if(Input.GetKeyDown(KeyCode.KeypadEnter) && manual)
+        {
+            gameController.PlaceUnits();
+        }
 
         //delta_time += Time.deltaTime;
         //if (delta_time > 0.1f)
@@ -76,6 +89,10 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
+        if (manual)
+        {
+            sim_runs = 0;
+        }
         for (int i = 0; i < sim_runs; i++)
         {
             RunSimulation();

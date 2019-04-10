@@ -453,7 +453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1095057812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
+  attack: 1
 --- !u!1 &1854128309
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216072cc4c92dcd45b2585312762ca44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manual: 0
   TilePrefab: {fileID: 1035648836557018, guid: 799652bdcffa696449425a33209dd73f, type: 2}
   map_width: 100
   map_height: 100
@@ -857,3 +859,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+  attack: 1

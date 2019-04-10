@@ -5,8 +5,10 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     private List<Squad> squads = new List<Squad>();
-
     public Team team;
+
+    [SerializeField]
+    private bool attack = false;
 
     public void GiveSquads(List<GameObject> _squads)
     {
@@ -14,7 +16,7 @@ public class BattleManager : MonoBehaviour
 
         foreach (GameObject squad in _squads)
         {
-            if (team == Team.BLUE)
+            if (attack)
             {
                 squad.GetComponent<Squad>().orders = SQUADORDER.ATTACKFLAG;
             }

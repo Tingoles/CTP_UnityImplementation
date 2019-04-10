@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject TerrainGeneratorGO;
+    private TerrainGenerator terrain_generator;
 
     public GameObject UnitManagerGO;
     private UnitManager UnitManager;
@@ -25,13 +26,20 @@ public class GameController : MonoBehaviour
 
     void Start ()
     {
-        TerrainGenerator terrain_generator = TerrainGeneratorGO.GetComponent<TerrainGenerator>();
+        terrain_generator = TerrainGeneratorGO.GetComponent<TerrainGenerator>();
         TheGrid = terrain_generator.GenerateTerrain();
 
-        UnitManager = UnitManagerGO.GetComponent<UnitManager>();
-
-        TheGrid = UnitManager.placeUnits(TheGrid, terrain_generator.map_width, terrain_generator.map_height);
+        if(terrain_generator.manual == false)
+        {
+            PlaceUnits();
+        }
 	}
+
+    public void PlaceUnits()
+    {
+        UnitManager = UnitManagerGO.GetComponent<UnitManager>();
+        TheGrid = UnitManager.placeUnits(TheGrid, terrain_generator.map_width, terrain_generator.map_height);
+    }
 
     private void Update()
     {
